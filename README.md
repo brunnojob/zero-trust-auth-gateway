@@ -11,3 +11,4 @@ GATEWAY_SECRET=$(node -e "console.log(require('node:crypto').randomBytes(32).toS
 ```
 
 The sample API binds to loopback and returns no real account data. Use an identity provider and managed key service before production.
+# THIS IS FOR PROTECT YOUR GATEWAY IF YOU WANNA CREATE ONE
