@@ -1,12 +1,13 @@
 # Zero Trust Auth Gateway
 
-A defensive reference implementation for short-lived signed tokens, route scopes, replay protection, rate limits and audit events.
+A TypeScript security boundary for short-lived signed tokens, route scopes, replay protection, sliding-window limits and tamper-evident audit events.
 
 ## Run
 
 ```bash
-python gateway.py
-python -m unittest
+npm install
+npm test
+GATEWAY_SECRET=$(node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))") npm start
 ```
 
-Uses the Python standard library. This is a learning prototype; production deployments need a reviewed identity provider and key management.
+The sample API binds to loopback and returns no real account data. Use an identity provider and managed key service before production.
