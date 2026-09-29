@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "node:crypto"
+import { createHmac, randomBytes, timingSafeEqual } from "node:crypto"
 
 export type TokenClaims = {
   sub: string
@@ -28,7 +28,7 @@ export class TokenService {
       scopes: [...new Set(scopes)].sort(),
       iat: now,
       exp: now + ttl,
-      jti: cryptoRandomId()
+      jti: randomBytes(18).toString("base64url")
     }
     const payload = Buffer.from(JSON.stringify(claims)).toString("base64url")
     return `${payload}.${this.sign(payload)}`
@@ -61,6 +61,3 @@ export class TokenService {
   }
 }
 
-function cryptoRandomId(): string {
-  return Buffer.from(crypto.getRandomValues(new Uint8Array(18))).toString("base64url")
-}
