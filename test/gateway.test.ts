@@ -54,7 +54,9 @@ test("nonce replay and stale requests are rejected", () => {
   const req = request(token, "nonce-abcdefghijklmno")
   gateway.authorize(req)
   assert.throws(() => gateway.authorize(req), /replayed_request/)
-  assert.throws(() => gateway.authorize(request(token, "nonce-abcdefghijklmnop", 1100)), /expired_or_future_token|stale_request/)
+  const stale = request(token, "nonce-abcdefghijklmnop", 1000)
+  stale.headers["x-request-timestamp"] = "900"
+  assert.throws(() => gateway.authorize(stale), /stale_request/)
 })
 
 test("rate limit rejects request bursts", () => {
@@ -64,7 +66,7 @@ test("rate limit rejects request bursts", () => {
   assert.throws(() => gateway.authorize(request(token, "nonce-abcdefghijklmnop")), /rate_limited/)
 })
 
-test("audit chain detects mutation", () => {
+test("audit snapshots cannot mutate the signed chain", () => {
   const { audit } = setup()
   audit.append({ timestamp: 1, subject: "s", method: "GET", path: "/", decision: "deny", reason: "test" })
   const events = audit.snapshot()
