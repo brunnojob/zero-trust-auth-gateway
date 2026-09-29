@@ -4,8 +4,8 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "start": "node --experimental-strip-types src/server.ts",
-    "test": "node --experimental-strip-types --test test/*.test.ts",
+    "start": "node --experimental-transform-types src/server.ts",
+    "test": "node --experimental-transform-types --test test/*.test.ts",
     "check": "tsc --noEmit"
   },
   "devDependencies": {
