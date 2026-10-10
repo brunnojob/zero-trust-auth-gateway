@@ -29,7 +29,7 @@ Original source and documentation are MIT licensed; see [LICENSE](LICENSE). Thir
 
 Replay keys encode principal and nonce boundaries unambiguously. Guard capacity and lifetime settings require positive integers, and invalid clocks cannot prune or extend replay entries. Run `npm test`.
 
-Contribution trailer: `Co-authored-by: nyctophile <329826984+ineedfoundmyway@users.noreply.github.com>`.
+Contribution trailer: `Co-authored-by: nyctophile <33561761+ineedfoundmyway@users.noreply.github.com>`.
 
 ## Execution proof
 
