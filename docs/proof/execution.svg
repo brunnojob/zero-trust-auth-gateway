@@ -3,19 +3,19 @@
 <title>Recorded program execution</title>
 <g font-family="monospace" font-size="16">
 <text x="24" y="36" fill="#c9d1d9">brunnojob/zero-trust-auth-gateway</text>
-<text x="24" y="58" fill="#c9d1d9">Executed: 2026-10-10T02:35:05.017556+00:00</text>
-<text x="24" y="80" fill="#c9d1d9">Source: 2f3ce7b0357b</text>
+<text x="24" y="58" fill="#c9d1d9">Executed: 2026-10-10T02:43:24.008522+00:00</text>
+<text x="24" y="80" fill="#c9d1d9">Source: 45c8e2d2b8ac</text>
 <text x="24" y="102" fill="#c9d1d9"></text>
 <text x="24" y="124" fill="#3fb950">PASS npm test</text>
 <text x="24" y="146" fill="#79c0ff">$ bash -e -o pipefail -c npm test</text>
 <text x="24" y="168" fill="#c9d1d9">&gt; zero-trust-auth-gateway@1.0.0 test</text>
 <text x="24" y="190" fill="#c9d1d9">&gt; node --experimental-transform-types --test test/*.test.ts</text>
-<text x="24" y="212" fill="#c9d1d9">(node:2384) ExperimentalWarning: Transform Types is an experimental feature and might change at any time</text>
+<text x="24" y="212" fill="#c9d1d9">(node:2229) ExperimentalWarning: Transform Types is an experimental feature and might change at any time</text>
 <text x="24" y="234" fill="#c9d1d9">(Use `node --trace-warnings ...` to show where the warning was created)</text>
-<text x="24" y="256" fill="#c9d1d9">✔ short lived scoped token grants matching route (3.178042ms)</text>
-<text x="24" y="278" fill="#c9d1d9">✔ insufficient scope is denied and audited (1.000741ms)</text>
-<text x="24" y="300" fill="#c9d1d9">✔ nonce replay and stale requests are rejected (0.801008ms)</text>
-<text x="24" y="322" fill="#c9d1d9">✔ rate limit rejects request bursts (0.678919ms)</text>
+<text x="24" y="256" fill="#c9d1d9">✔ short lived scoped token grants matching route (2.737866ms)</text>
+<text x="24" y="278" fill="#c9d1d9">✔ insufficient scope is denied and audited (0.793894ms)</text>
+<text x="24" y="300" fill="#c9d1d9">✔ nonce replay and stale requests are rejected (0.662368ms)</text>
+<text x="24" y="322" fill="#c9d1d9">✔ rate limit rejects request bursts (0.453256ms)</text>
 <text x="24" y="344" fill="#c9d1d9">Full output: evidence.json</text>
 <text x="24" y="366" fill="#c9d1d9"></text>
 <text x="24" y="388" fill="#3fb950">PASS npm run check</text>
@@ -25,7 +25,7 @@
 <text x="24" y="476" fill="#c9d1d9"></text>
 <text x="24" y="498" fill="#3fb950">PASS Authorize scoped token, reject replay and verify signed audit</text>
 <text x="24" y="520" fill="#79c0ff">$ node --experimental-transform-types .proof/demo.ts</text>
-<text x="24" y="542" fill="#c9d1d9">(node:2419) ExperimentalWarning: Transform Types is an experimental feature and might change at any time</text>
+<text x="24" y="542" fill="#c9d1d9">(node:2263) ExperimentalWarning: Transform Types is an experimental feature and might change at any time</text>
 <text x="24" y="564" fill="#c9d1d9">(Use `node --trace-warnings ...` to show where the warning was created)</text>
 <text x="24" y="586" fill="#c9d1d9">{&quot;authorized&quot;:&quot;operator-</text>
 <text x="24" y="608" fill="#c9d1d9">1&quot;,&quot;replay_denied&quot;:true,&quot;scope_denied&quot;:true,&quot;audit_chain_valid&quot;:true,&quot;decisions&quot;:[&quot;allow&quot;,&quot;deny&quot;,&quot;deny&quot;]}</text>

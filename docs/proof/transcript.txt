@@ -1,6 +1,6 @@
 $ bash -e -o pipefail -c npm ci
 
-added 3 packages, and audited 4 packages in 898ms
+added 3 packages, and audited 4 packages in 771ms
 
 found 0 vulnerabilities
 
@@ -9,17 +9,17 @@ $ bash -e -o pipefail -c npm test
 > zero-trust-auth-gateway@1.0.0 test
 > node --experimental-transform-types --test test/*.test.ts
 
-(node:2384) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:2229) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-✔ short lived scoped token grants matching route (3.178042ms)
-✔ insufficient scope is denied and audited (1.000741ms)
-✔ nonce replay and stale requests are rejected (0.801008ms)
-✔ rate limit rejects request bursts (0.678919ms)
-✔ audit snapshots cannot mutate the signed chain (0.396762ms)
-(node:2385) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+✔ short lived scoped token grants matching route (2.737866ms)
+✔ insufficient scope is denied and audited (0.793894ms)
+✔ nonce replay and stale requests are rejected (0.662368ms)
+✔ rate limit rejects request bursts (0.453256ms)
+✔ audit snapshots cannot mutate the signed chain (0.37532ms)
+(node:2235) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-✔ principal and nonce boundaries are unambiguous (7.41764ms)
-✔ invalid clocks cannot extend or clear replay entries (0.442658ms)
+✔ principal and nonce boundaries are unambiguous (0.988134ms)
+✔ invalid clocks cannot extend or clear replay entries (0.433877ms)
 ℹ tests 7
 ℹ suites 0
 ℹ pass 7
@@ -27,7 +27,7 @@ $ bash -e -o pipefail -c npm test
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 193.030982
+ℹ duration_ms 329.457779
 
 $ bash -e -o pipefail -c npm run check
 
@@ -36,6 +36,6 @@ $ bash -e -o pipefail -c npm run check
 
 
 $ node --experimental-transform-types .proof/demo.ts
-(node:2419) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(node:2263) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
 {"authorized":"operator-1","replay_denied":true,"scope_denied":true,"audit_chain_valid":true,"decisions":["allow","deny","deny"]}
