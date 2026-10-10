@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {randomBytes} from 'node:crypto';
+import {AuditChain} from '../src/audit.ts';
+import {TokenService} from '../src/token.ts';
+import {ZeroTrustGateway} from '../src/gateway.ts';
+import {RoutePolicyTable,SlidingWindowLimiter} from '../src/policy.ts';
+import {ReplayGuard} from '../src/replay.ts';
+const key=randomBytes(32), audit=new AuditChain(key), tokens=new TokenService(key,'proof-api');
+const gateway=new ZeroTrustGateway(tokens,new RoutePolicyTable([{method:'GET',path:'/v1/accounts',scope:'accounts:read'}]),new ReplayGuard(),new SlidingWindowLimiter(10,60),audit);
+const request={method:'GET',path:'/v1/accounts',now:1000,headers:{authorization:`Bearer ${tokens.issue('operator-1',['accounts:read'],1000)}`,'x-request-timestamp':'1000','x-request-nonce':'nonce-abcdefghijklmno'}};
+const decision=gateway.authorize(request);
+assert.equal(decision.subject,'operator-1');
+assert.throws(()=>gateway.authorize(request),/replayed_request/);
+const denied={...request,headers:{...request.headers,authorization:`Bearer ${tokens.issue('operator-1',['accounts:write'],1000)}`,'x-request-nonce':'nonce-abcdefghijklmnop'}};
+assert.throws(()=>gateway.authorize(denied),/insufficient_scope/);
+assert.ok(audit.verify());
+console.log(JSON.stringify({authorized:decision.subject,replay_denied:true,scope_denied:true,audit_chain_valid:audit.verify(),decisions:audit.snapshot().map(v=>v.decision)}));

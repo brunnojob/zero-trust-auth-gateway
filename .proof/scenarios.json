@@ -1,0 +1,61 @@
+{
+  "repository": "brunnojob/zero-trust-auth-gateway",
+  "inputs": [
+    ".proof/scenarios.json",
+    ".proof/demo.ts"
+  ],
+  "cases": [
+    {
+      "name": "npm ci",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "npm ci"
+      ],
+      "timeout": 900,
+      "display": false
+    },
+    {
+      "name": "npm test",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "npm test"
+      ],
+      "timeout": 900,
+      "display": true
+    },
+    {
+      "name": "npm run check",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "npm run check"
+      ],
+      "timeout": 900,
+      "display": true
+    },
+    {
+      "name": "Authorize scoped token, reject replay and verify signed audit",
+      "argv": [
+        "node",
+        "--experimental-transform-types",
+        ".proof/demo.ts"
+      ],
+      "contains": [
+        "\"replay_denied\":true",
+        "\"audit_chain_valid\":true"
+      ],
+      "timeout": 120
+    }
+  ]
+}
