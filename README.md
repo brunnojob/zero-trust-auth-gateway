@@ -1,5 +1,7 @@
 # Auth Gateway
 
+[View execution evidence](https://brunnojob.github.io/devstart-lab/proofs/zero-trust-auth-gateway/)
+
 A gateway with short-lived tokens, scopes, replay protection, limits, and auditing, plus Supabase authentication for private report access.
 
 ## Run
